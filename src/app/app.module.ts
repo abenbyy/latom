@@ -48,6 +48,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
+import { HeaderComponent } from './components/header/header.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CheckerComponent } from './pages/checker/checker.component';
+import { HomeComponent } from './pages/home/home.component';
 
 
 const MaterialModules = [
@@ -99,7 +105,13 @@ const MaterialModules = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    LoginComponent,
+    RegisterComponent,
+    FooterComponent,
+    CheckerComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

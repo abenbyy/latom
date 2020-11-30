@@ -1,0 +1,19 @@
+@import '../../styles/colors.scss';
+@import '../../styles/fonts.scss';
+
+*{
+    @include default-font();
+}
+
+mat-card{
+    margin: 10px 0;
+}
+.category{
+    background-color: white;
+    color: black;
+}
+
+.activated{
+    background-color: $primary;
+    color: white;
+}

@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'Whitney';
+    src:  url('../../assets/fonts/whitneylight.otf')
+}
+
+@mixin default-font() {
+    font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}

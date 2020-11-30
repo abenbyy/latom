@@ -1,0 +1,23 @@
+@import '../../styles/colors.scss';
+@import '../../styles/fonts.scss';
+@import '../../styles/mixins.scss';
+
+*{
+    @include default-font();
+}
+
+header{
+    @include dfjcsbaic();
+    @include primary-theme();
+    padding: 0 10px;
+}
+
+#left-header{
+    @include dfjccaic();
+}
+
+.logo{
+    width: 70px;
+    height: auto;
+}
+

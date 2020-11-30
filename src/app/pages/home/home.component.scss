@@ -1,0 +1,35 @@
+@import '../../styles/colors.scss';
+@import '../../styles/fonts.scss';
+@import '../../styles/mixins.scss';
+
+#main-cont{
+    @include default-font();
+    display: flex;
+    flex-direction: column;
+    padding: 0 80px;
+}
+
+img{
+    width: 600px;
+    height: auto;
+}
+
+.banner-cont{
+    @include dfjccaic();
+    
+    
+}
+.reversed{
+    flex-direction: row-reverse;
+}
+
+.banner-text{
+    span{
+        font-size: 30px;
+    }
+
+    p{
+        font-size: 18px;
+    }
+}
+

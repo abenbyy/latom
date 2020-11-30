@@ -1,0 +1,12 @@
+$primary: #673AB7;
+$compliment: #1F2531;
+
+@mixin primary-theme() {
+    background-color: $primary;
+    color: white;
+}
+
+@mixin compliment-theme(){
+    background-color: $compliment;
+    color: white;
+}

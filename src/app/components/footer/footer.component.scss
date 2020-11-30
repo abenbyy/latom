@@ -1,0 +1,14 @@
+@import '../../styles/colors.scss';
+@import '../../styles/fonts.scss';
+@import '../../styles/mixins.scss';
+
+footer{
+    @include default-font();
+    @include compliment-theme();
+    @include dfjcsaais();
+    padding: 20px 0;
+}
+
+a{
+    color: white;
+}
