@@ -57,6 +57,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ApiMedicService } from './services/apimedic.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PredictionComponent } from './pages/prediction/prediction.component';
+import { IssueInfoComponent } from './pages/issue-info/issue-info.component';
 
 
 const MaterialModules = [
@@ -116,6 +117,7 @@ const MaterialModules = [
     CheckerComponent,
     HomeComponent,
     PredictionComponent,
+    IssueInfoComponent,
   ],
   imports: [
     BrowserModule,

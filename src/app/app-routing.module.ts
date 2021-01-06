@@ -4,6 +4,7 @@ import { CheckerComponent } from './pages/checker/checker.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { PredictionComponent } from './pages/prediction/prediction.component';
+import { IssueInfoComponent } from './pages/issue-info/issue-info.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'prediction',
     component: PredictionComponent,
+  },
+  {
+    path: 'issue-info/:id',
+    component: IssueInfoComponent,
   }
 ];
 

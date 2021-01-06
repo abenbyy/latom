@@ -1,52 +1,54 @@
 <app-header></app-header>
-<mat-vertical-stepper [linear]="true" #stepper>
-    <mat-step>
-        <ng-template matStepLabel>Category</ng-template>
-        <mat-card class="category" (click)="selectLocation(i)" mat-ripple *ngFor="let bl of bodyLocations; let i = index">
-            <div>
-                {{bl.Name}}
-            </div>
-            
-        </mat-card>
-
-        <button mat-raised-button color="primary" matStepperNext>Next</button>
-
-    </mat-step>
-    <mat-step>
-        <ng-template matStepLabel>Body Part</ng-template>
-
-        <div *ngIf="currLocation === -1">Please Select Category First!</div>
-        <mat-card class="sub-location" (click)="selectSubLocation(i)" mat-ripple *ngFor="let bls of bodySubLocations; let i = index">
-            <div>
-                {{bls.Name}}
-            </div>
-        </mat-card>
-
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-raised-button color="primary" matStepperNext>Next</button>
-    </mat-step>
-
-    <mat-step>
-        <ng-template matStepLabel>Symptom</ng-template>
-
-        <div *ngIf="currSubLocations === -1">Please Select Category First!</div>
-        <mat-card class="symptom" (click)="selectSymptom(i)" mat-ripple *ngFor="let s of symptoms; let i = index">
-            <div>
-                {{s.Name}}
-            </div>
-        </mat-card>
-
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-raised-button color="primary" matStepperNext>Next</button>
-    </mat-step>
-
-    <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-        <button mat-button (click)="goToPredict()">Predict!</button>
-        <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
-    </div>
-    </mat-step>
-</mat-vertical-stepper>
+<section>
+    <mat-vertical-stepper [linear]="true" #stepper>
+        <mat-step>
+            <ng-template matStepLabel>Category</ng-template>
+            <mat-card class="category" (click)="selectLocation(i)" mat-ripple *ngFor="let bl of bodyLocations; let i = index">
+                <div>
+                    {{bl.Name}}
+                </div>
+                
+            </mat-card>
+    
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+    
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Body Part</ng-template>
+    
+            <div *ngIf="currLocation === -1">Please Select Category First!</div>
+            <mat-card class="sub-location" (click)="selectSubLocation(i)" mat-ripple *ngFor="let bls of bodySubLocations; let i = index">
+                <div>
+                    {{bls.Name}}
+                </div>
+            </mat-card>
+    
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </mat-step>
+    
+        <mat-step>
+            <ng-template matStepLabel>Symptom</ng-template>
+    
+            <div *ngIf="currSubLocations === -1">Please Select Category First!</div>
+            <mat-card class="symptom" (click)="selectSymptom(i)" mat-ripple *ngFor="let s of symptoms; let i = index">
+                <div>
+                    {{s.Name}}
+                </div>
+            </mat-card>
+    
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </mat-step>
+    
+        <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+            <button mat-button (click)="goToPredict()">Predict!</button>
+            <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+        </div>
+        </mat-step>
+    </mat-vertical-stepper>
+</section>
 <app-footer></app-footer>

@@ -53,7 +53,11 @@ export class ApiMedicService {
   }
 
   public getDiagnosis(){
-    return this.http.get(`${this.HEALTH_API}diagnosis?token=${this.TOKEN}&language=en-gb&gender=male&year_of_birth=2000&symptoms=[${this.symptoms}]`);
+    return this.http.get(`${this.HEALTH_API}diagnosis?token=${this.TOKEN}&language=en-gb&gender=male&year_of_birth=2000&symptoms=[${this.symptoms}]`);    
+  }
+
+  public getIssueInfo(id:number){
+    return this.http.get(`${this.HEALTH_API}issues/${id}/info?token=${this.TOKEN}&language=en-gb`)
   }
   
 

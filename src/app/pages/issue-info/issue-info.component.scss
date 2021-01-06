@@ -1,0 +1,17 @@
+section{
+    min-height: 65vh;
+    padding: 100px;
+}
+
+.header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+.mat-card-content{
+    margin: 0 16px;
+}
+
+p{
+    font-size: 12pt;
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiMedicService } from 'src/app/services/apimedic.service';
 
 @Component({
@@ -14,6 +14,7 @@ export class PredictionComponent implements OnInit {
 
   constructor(
     private service: ApiMedicService,
+    private router: Router,
   ) { }
 
   predict(){
@@ -24,6 +25,9 @@ export class PredictionComponent implements OnInit {
         await console.log(data);
       })
     })
+  }
+  goToIssueInfo(id:number){
+    this.router.navigate(["./issue-info",this.predictions[id].Issue.ID])
   }
 
   ngOnInit(): void {

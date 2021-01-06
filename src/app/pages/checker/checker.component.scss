@@ -5,6 +5,10 @@
     @include default-font();
 }
 
+section{
+    min-height: 80vh;
+}
+
 mat-card{
     margin: 10px 0;
 }

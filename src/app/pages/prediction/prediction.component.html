@@ -10,8 +10,11 @@
                 Accuracy: {{p.Issue.Accuracy}}%
             </mat-panel-description>
             </mat-expansion-panel-header>
+            <h5 style="color: gray;margin: 0;">Medical Name:</h5>
             <h2>{{p.Issue.ProfName}}</h2>
+            <h5 style="color: gray;margin: 0;">Description:</h5>
             <p>{{p.Issue.IcdName}}</p>
+            <button mat-raised-button color="primary" (click)="goToIssueInfo(i)">Learn More</button>
         </mat-expansion-panel>
     </mat-accordion>
 </section>
