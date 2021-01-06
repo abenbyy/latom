@@ -47,6 +47,8 @@ export class CheckerComponent implements OnInit {
 
   selectSubLocation(id: number){
     this.currSubLocations = this.bodySubLocations[id].ID;
+    this.clearSubLocations();
+    document.querySelectorAll('.sub-location')[id].classList.add('activated'); 
     this.loadSymptoms();
   }
 
@@ -62,12 +64,19 @@ export class CheckerComponent implements OnInit {
 
   selectSymptom(id:number){
     this.currSymptoms.push(this.symptoms[id].ID);
-    console.log(this.currSymptoms);
+    document.querySelectorAll('.symptom')[id].classList.add('activated'); 
   }
 
   clearCategories(){
     for(let i=0;i<document.querySelectorAll('.category').length;i++){
       document.querySelectorAll('.category')[i].classList.remove('activated');
+
+    }
+  }
+
+  clearSubLocations(){
+    for(let i=0;i<document.querySelectorAll('.sub-location').length;i++){
+      document.querySelectorAll('.sub-location')[i].classList.remove('activated');
 
     }
   }

@@ -30,7 +30,7 @@
         <ng-template matStepLabel>Symptom</ng-template>
 
         <div *ngIf="currSubLocations === -1">Please Select Category First!</div>
-        <mat-card class="sub-location" (click)="selectSymptom(i)" mat-ripple *ngFor="let s of symptoms; let i = index">
+        <mat-card class="symptom" (click)="selectSymptom(i)" mat-ripple *ngFor="let s of symptoms; let i = index">
             <div>
                 {{s.Name}}
             </div>
