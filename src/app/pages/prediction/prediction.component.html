@@ -1,0 +1,18 @@
+<app-header></app-header>
+<section>
+    <mat-accordion>
+        <mat-expansion-panel hideToggle *ngFor="let p of predictions; let i = index">
+            <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{p.Issue.Name}}
+            </mat-panel-title>
+            <mat-panel-description>
+                Accuracy: {{p.Issue.Accuracy}}%
+            </mat-panel-description>
+            </mat-expansion-panel-header>
+            <h2>{{p.Issue.ProfName}}</h2>
+            <p>{{p.Issue.IcdName}}</p>
+        </mat-expansion-panel>
+    </mat-accordion>
+</section>
+<app-footer></app-footer>

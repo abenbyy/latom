@@ -4,6 +4,7 @@
         <span>Legitimate Artificaly Trained Operational Medic</span>
     </div>
     <div>
-        <button mat-button>Login</button>
+        <button *ngIf="displayEmail === ''||displayEmail === null" mat-button (click)="goToLogin()">Login</button>
+        <div *ngIf="displayEmail !== ''">{{displayEmail}}</div>
     </div>
 </header>

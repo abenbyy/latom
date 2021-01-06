@@ -54,6 +54,9 @@ import { RegisterComponent } from './pages/register/register.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CheckerComponent } from './pages/checker/checker.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ApiMedicService } from './services/apimedic.service';
+import { HttpClientModule } from '@angular/common/http';
+import { PredictionComponent } from './pages/prediction/prediction.component';
 
 
 const MaterialModules = [
@@ -112,18 +115,22 @@ const MaterialModules = [
     FooterComponent,
     CheckerComponent,
     HomeComponent,
+    PredictionComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MaterialModules,
   ],
   exports: [
     MaterialModules,
 
   ],
-  providers: [],
+  providers: [
+    ApiMedicService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

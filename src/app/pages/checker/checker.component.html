@@ -2,9 +2,9 @@
 <mat-vertical-stepper [linear]="true" #stepper>
     <mat-step>
         <ng-template matStepLabel>Category</ng-template>
-        <mat-card class="category" (click)="selectCategory(i)" mat-ripple *ngFor="let cat of dummyCategories; let i = index">
+        <mat-card class="category" (click)="selectLocation(i)" mat-ripple *ngFor="let bl of bodyLocations; let i = index">
             <div>
-                {{cat.category}}
+                {{bl.Name}}
             </div>
             
         </mat-card>
@@ -15,13 +15,12 @@
     <mat-step>
         <ng-template matStepLabel>Body Part</ng-template>
 
-        <div *ngIf="currCategoryId === -1">Please Select Category First!</div>
-        <div *ngFor="let p of dummyParts[currCategoryId]">
-            <mat-card matRipple>
-                {{p.part}}
-            </mat-card>
-            
-        </div>
+        <div *ngIf="currLocation === -1">Please Select Category First!</div>
+        <mat-card class="sub-location" (click)="selectSubLocation(i)" mat-ripple *ngFor="let bls of bodySubLocations; let i = index">
+            <div>
+                {{bls.Name}}
+            </div>
+        </mat-card>
 
         <button mat-button matStepperPrevious>Back</button>
         <button mat-raised-button color="primary" matStepperNext>Next</button>
@@ -29,6 +28,14 @@
 
     <mat-step>
         <ng-template matStepLabel>Symptom</ng-template>
+
+        <div *ngIf="currSubLocations === -1">Please Select Category First!</div>
+        <mat-card class="sub-location" (click)="selectSymptom(i)" mat-ripple *ngFor="let s of symptoms; let i = index">
+            <div>
+                {{s.Name}}
+            </div>
+        </mat-card>
+
         <button mat-button matStepperPrevious>Back</button>
         <button mat-raised-button color="primary" matStepperNext>Next</button>
     </mat-step>
@@ -37,7 +44,7 @@
     <ng-template matStepLabel>Done</ng-template>
     <p>You are now done.</p>
     <div>
-        <button mat-button>Predict!</button>
+        <button mat-button (click)="goToPredict()">Predict!</button>
         <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
     </div>
     </mat-step>

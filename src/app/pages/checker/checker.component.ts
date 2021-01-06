@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiMedicService } from '../../services/apimedic.service';
+import { BodyLocation } from '../../models/body-location';
+import { BodySublocation } from '../../models/body-sublocation';
+import { Symptoms } from '../../models/symptoms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checker',
@@ -8,109 +13,56 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CheckerComponent implements OnInit {
 
-  currCategoryId: number
-  currPart: string
+  currLocation: number
+  currSubLocations: number
+  currSymptoms: number[]
+
+  bodyLocations
+  bodySubLocations
+  symptoms
+
 
   mCategory = []
 
-  dummyCategories = [
-    {
-      id: 1,
-      category: 'Abdomen, Pelvis & Buttocks'
-    },
-    {
-      id: 2,
-      category: 'Arms & Shoulder'
-    },
-    {
-      id: 3,
-      category: 'Chest & Back'
-    },
-    {
-      id: 4,
-      category: 'Head, Throat & Neck'
-    }
-  ]
-
-  dummyParts = [
-    [
-      // Abdomen, Pelvis & Buttocks
-      {
-        part: 'Abdomen',
-      },
-      {
-        part: 'Buttocks & Rectum',
-      },
-      {
-        part: 'Genitals & Groin',
-      },
-      {
-        part: 'Hips & Hip Joint',
-      },
-    ],
-    [
-      // Arms & Shoulder
-      {
-        part: 'Arms',
-      },
-      {
-        part: 'Hands',
-      },
-      {
-        part: 'Shoulder',
-      },
-      {
-        part: 'Wrists',
-      },
-    ],
-    [
-      // Chest & Back
-      {
-        part: 'Heart',
-      },
-      {
-        part: 'Chest',
-      },
-      {
-        part: 'Back',
-      },
-      {
-        part: 'Lung',
-      },
-    ],
-    [
-      // Head, Throat & Neck
-      {
-        part: 'Frontal Lobe',
-      },
-      {
-        part: 'Occipital Lobe',
-      },
-      {
-        part: 'Throat',
-      },
-      {
-        part: 'Neck',
-      },
-      {
-        part: 'Eye',
-      },
-      {
-        part: 'Nose',
-      },
-      {
-        part: 'Ear',
-      },
-    ],    
-  ]
-
-  constructor() {}
+  constructor(
+    private service: ApiMedicService,
+    private router: Router) {}
   
-  selectCategory(id: number){
-    this.currCategoryId = id;
+  selectLocation(id: number){
+    this.currLocation = this.bodyLocations[id].ID;
     this.clearCategories();
-    document.querySelectorAll('.category')[id].classList.add('activated');
-    
+    document.querySelectorAll('.category')[id].classList.add('activated'); 
+    this.loadSubLocations();   
+  }
+
+  loadSubLocations(){
+    console.log(this.bodySubLocations)
+    this.service.getToken().subscribe(async (data:any) =>{
+      this.service.TOKEN = data.Token;
+      await this.service.getBodySubLocations(this.currLocation).subscribe(async data =>{
+        this.bodySubLocations = data;
+      })
+    })
+  }
+
+  selectSubLocation(id: number){
+    this.currSubLocations = this.bodySubLocations[id].ID;
+    this.loadSymptoms();
+  }
+
+  loadSymptoms(){
+    this.service.getToken().subscribe(async (data:any) =>{
+      this.service.TOKEN = data.Token;
+      await this.service.getSymptoms(this.currSubLocations).subscribe(async data=>{
+        this.symptoms = data;
+        await console.log(data);
+      })
+    })
+  }
+
+  selectSymptom(id:number){
+    this.currSymptoms.push(this.symptoms[id].ID);
+    console.log(this.currSymptoms);
   }
 
   clearCategories(){
@@ -120,31 +72,35 @@ export class CheckerComponent implements OnInit {
     }
   }
 
+  goToPredict(){
+    this.service.symptoms = this.currSymptoms;
+    this.router.navigate(['prediction']);
+  }
+
+
   ngOnInit(): void {
-    this.currCategoryId = -1;
+    this.currLocation = -1;
+    this.currSubLocations = -1;
+    this.currSymptoms = [];
+
+    this.bodyLocations = [];
+    this.bodySubLocations = [];
+    this.symptoms = [];
+
+    
+    this.service.getToken().subscribe(async (data:any) =>{
+      this.service.TOKEN = data.Token;
+      await this.service.getBodyLocations().subscribe(async data =>{
+        this.bodyLocations = data;
+      })
+    })
+    
     var checkRender = setInterval(function(){
       if(document.querySelectorAll('.category').length){
           let temp = document.querySelectorAll('.category');
-          console.log(temp)
-          // for(let i=0;i<temp.length;i++){
-
-          //   this.mCategory.push(temp[i] as HTMLElement);
-
-          // }
-
         clearInterval(checkRender)
       }
     }, 100)
-
-    
-
-    
-    // this.firstFormGroup = this._formBuilder.group({
-    //   firstCtrl: ['', Validators.required]
-    // });
-    // this.secondFormGroup = this._formBuilder.group({
-    //   secondCtrl: ['', Validators.required]
-    // });
   }
 
 }
